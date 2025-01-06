@@ -18,6 +18,9 @@ class Category(models.Model):
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 
+    def __str__(self):
+        return self.title
+
 
 class Product(models.Model):
     title = models.CharField(_('title'), max_length=50)
@@ -27,7 +30,6 @@ class Product(models.Model):
     categories = models.ManyToManyField('Category', verbose_name=_('Category'), blank=True)
     created_time = models.DateTimeField(_('created_time'), auto_now_add=True)
     updated_time = models.DateTimeField(_('updated_time'), auto_now=True)
-
 
     class Meta:
         db_table = 'products'
@@ -42,4 +44,3 @@ class File(models.Model):
     is_enable = models.BooleanField(_('is enable'), default=True)
     created_time = models.DateTimeField(_('created_time'), auto_now_add=True)
     updated_time = models.DateTimeField(_('updated_time'), auto_now=True)
-
